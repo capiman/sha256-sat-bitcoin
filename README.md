@@ -185,7 +185,23 @@ Single round CNFs:
 - set_sha256_message_hello.cnf
 
 ```
-  Sets "hello" into w[0] to w[15] (which is located from 1 to 512)
+  Sets "hello" into w[0] to w[15] (which is located from 1 to 512).
+  w[0] contains "hell".
+  'h' is 0x68, which is binary 01101000.
+  'e' is 0x65, which is binary 01100101.
+  'l' is 0x6C, which is binary 01101100.
+  'l' is 0x6C, which is binary 01101100.
+  In CNF a 0 bit is represented by "-x 0", a 1 bit by "x 0".
+  Starting from behind (second 'l') and lowest bit first.
+  Character 'l' Bit 0 is 0: Variable 1 "-1 0"
+  Character 'l' Bit 1 is 0: Variable 2 "-2 0"
+  Character 'l' Bit 2 is 1: Variable 2 "3 0"
+  Character 'l' Bit 3 is 1: Variable 2 "4 0"
+  Character 'l' Bit 4 is 0: Variable 2 "-5 0"
+  Character 'l' Bit 5 is 1: Variable 2 "6 0"
+  Character 'l' Bit 6 is 1: Variable 2 "7 0"
+  Character 'l' Bit 7 is 0: Variable 2 "-8 0"
+  and so on...
 ```
 
 - set_sha256_message_5_bytes_long.cnf
