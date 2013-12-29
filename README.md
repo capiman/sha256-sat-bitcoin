@@ -150,6 +150,7 @@ into the message part of the second round.
 First test were done with two separate rounds, one for each round of SHA256 of Bitcoin.
 
 All the example are based on the example, which is mentioned on a bitcoin Wiki:
+
 https://en.bitcoin.it/wiki/Protocol_specification
 
 ```
@@ -163,81 +164,111 @@ Single round CNFs:
 
 - sha256_tseitin_adders_without_message_nor_hash.cnf
 
+```
   This is CNF for general SHA256 created with TSEITIN ADDERS
+
   (./main --cnf --tseitin-adders --hash-bits=256 > sha256_tseitin_adders.cnf
+
    and cut away setting of message bits)
+```
 
 - sha256_espresso_without_message_nor_hash.cnf
 
+```
   This is CNF for general SHA256 created with TSEITIN ADDERS
+
   (./main --cnf --hash-bits=256 > sha256_espresso.cnf
+
    and cut away setting of message bits)
+```
 
 - set_sha256_message_hello.cnf
 
+```
   Sets "hello" into w[0] to w[15] (which is located from 1 to 512)
+```
 
 - set_sha256_message_5_bytes_long.cnf
 
+```
   Contain content which sets message length to 5 bytes,
   these first 5 bytes (w[0] and one byte in w[1]) are freely available,
   all other bytes are set to 0x00, length set to 40 bits.
   w[0] to w[15] are located from 1 to 512.
+```
 
 - set_sha256_bitcoin_second_round_half_message_fixed.cnf
 
+```
   Contain content which sets message length to 32 bytes,
   these first 32 bytes (w[0] to w[7]) are freely available,
   all other bytes are set to 0x00, length set to 256 bits
   w[0] to w[15] are located from 1 to 512.
   This is used for Bitcoin where resulting hash (256 bits)
   is set into message for second round.
+```
 
 - set_sha256_bitcoin_second_round_half_message_hash_of_hello.cnf
 
+```
   This file contains the result of SHA256("hello") as
   content for the first 256 bits of the message.
+```
 
 - set_sha256_bitcoin_second_round_half_message_hash_of_hello_reduced_to_248_bits.cnf
 
+```
   This file contains the result of SHA256("hello") as
   content for the first 256 bits of the message,
   but reduced to first 248 bits.
+```
 
 - set_sha256_bitcoin_second_round_half_message_hash_of_hello_reduced_to_240_bits.cnf
 
+```
   This file contains the result of SHA256("hello") as
   content for the first 256 bits of the message,
   but reduced to first 240 bits.
+```
 
 - set_sha256_bitcoin_second_round_half_message_hash_of_hello_reduced_to_236_bits.cnf
 
+```
   This file contains the result of SHA256("hello") as
   content for the first 256 bits of the message,
   but reduced to first 236 bits.
+```
 
 - set_sha256_bitcoin_second_round_hash_of_hello.cnf
 
+```
   Variables 2049 to 2304
   This is the hash for hello of two rounds (=SHA256(SHA256(x))),
   which means it calculates the second half of a bitcoin calculation.
+```
 
 - set_sha256_hash_of_message_hello.cnf
 
+```
   Variables 2049 to 2304
   This is the hash for hello of one rounds (=SHA256(x)),
   which means it calculates the first half of a bitcoin calculation.
+```
 
 Double round CNFs:
 (file names start with bitcoin or set_bitcoin)
 
 - bitcoin_tseitin_adders.cnf
 
+```
   This file contains 2 sequential rounds of SHA256 to do the same as bitcoin.
+```
 
 - set_bitcoin_hash_of_message_hello.cnf
 
+```
   Hash of message hello for bitcoin (2 rounds) with tseitsin adders
+```
 
 Examples with Cryptominisat and SHA256:
 
