@@ -52,6 +52,9 @@ Beginning of CNF file contains setting of message,
 please cut away, if you want to set general messages.
 (Will be correct in a future release)
 
+Attention: A lot of command line option are not supported yet,
+even when they are already available and can be called.
+
 To look at the possible options, run:
 
 > ./main --help
@@ -77,7 +80,13 @@ an error code of 0 if and only if the solution is correct.
 
 # Description of CNF files
 
-Generated CNF files contain helpful comment, please have a look into files.
+Generated CNF are gzipped to save space on github.
+Generated CNF files contain helpful comment,
+please decompress them and have a look into the files.
+
+All files start with "set" set certain variables,
+likes setting the message, the hash, intermediate results
+or at least parts of them. No complete calculation!
 
 This program can generate two variants: SHA256 and Bitcoin
 Bitcoin uses two rounds of SHA256, feeding the result of the first round
@@ -131,18 +140,32 @@ First test were done with two separate rounds, one for each round of SHA256 of B
   but reduced to first 236 bits.
 
 - set_sha256_bitcoin_second_round_hash_of_hello.cnf
+  Variables 2049 to 2304
+
 - set_sha256_hash_of_message_hello.cnf
+  Variables 2049 to 2304
 
-bitcoin_tseitin_adders.cnf
+- bitcoin_tseitin_adders.cnf
+  This file contains 2 rounds of SHA256 to do the same as bitcoin.
+
 - set_bitcoin_hash_of_message_hello.cnf
-
+  Hash of message hello for bitcoin (2 rounds) with tseitsin adders
 
 Examples with Cryptominisat (64 Bit):
 
 cryptominisat64.exe --input=set_sha256_message_5_bytes_long.cnf
                     --input=set_bitcoin_hash_of_message_hello.cnf
-                    --input=bitcoin_irred_9.cnf
+                    --input=bitcoin_tseitin_adders.cnf
                     --dumpres=bitcoin_test.res
+
+# Comments
+
+All in all it takes too long to do useful things with it...
+
+In my tests with CMS 3.x the version with TSEITIN ADDERS
+were faster than version with ESPRESSO.
+I used ESPRESSO only on a Raspberry PI to generate the files,
+not used them much on my PC afterwards.
 
 # About
 
