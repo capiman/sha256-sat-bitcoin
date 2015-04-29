@@ -34,10 +34,11 @@ to enable espresso. If you don't want to use espresso, just let it away.
 Before running, please make sure that the espresso binary is in your PATH.
 espresso is used to minimise the truth tables for the pseudo-boolean
 constraints used to encode the adders. You can obtain espresso from
-<ftp://ftp.cs.man.ac.uk/pub/amulet/balsa/other-software/espresso-ab-1.0.tar.gz>.
+<https://eqntott.googlecode.com/files/espresso-ab-1.0.tar.gz>
+SHA1 Checksum:	f5b6e98525b13bb8d6cdededa6ae1810fbe3ca1f.
 
 ```
-> wget ftp://ftp.cs.man.ac.uk/pub/amulet/balsa/other-software/espresso-ab-1.0.tar.gz
+> wget https://eqntott.googlecode.com/files/espresso-ab-1.0.tar.gz
 > tar xzvf espresso-ab-1.0.tar.gz
 > cd espresso-ab-1.0
 > ./configure
